@@ -1,0 +1,27 @@
+# Model Results
+
+Dataset:
+- AutoInsuranceClaim.csv
+- Spark records used by ML workflow: 595,212
+- Columns: 59
+- Claim rate: approximately 3.64%
+
+Models:
+
+| Model | Accuracy | Precision | Recall | F1 | ROC-AUC |
+|---|---:|---:|---:|---:|---:|
+| Logistic Regression | 0.6200 | 0.0526 | 0.5504 | 0.0960 | 0.6205 |
+| Decision Tree | 0.6775 | 0.0526 | 0.4579 | 0.0943 | 0.4390 |
+| Random Forest | 0.6453 | 0.0537 | 0.5217 | 0.0974 | 0.6213 |
+
+Interpretation:
+- Random Forest has the best F1 score and ROC-AUC among the tested models.
+- Logistic Regression has the highest claim recall.
+- Accuracy alone is not sufficient because the target is highly imbalanced.
+- Class weighting was applied to give greater importance to the minority claim class.
+
+HDFS prediction output:
+- Location: /data/insurance/results/random_forest_predictions
+- _SUCCESS marker present
+- 8 Spark partition CSV files verified
+- Prediction columns: target, prediction

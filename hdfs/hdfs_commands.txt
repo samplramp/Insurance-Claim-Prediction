@@ -1,0 +1,19 @@
+# HDFS Commands - Insurance Claim Prediction
+
+hdfs dfs -mkdir -p /data/insurance/raw
+hdfs dfs -mkdir -p /data/insurance/processed
+hdfs dfs -mkdir -p /data/insurance/results
+
+hdfs dfs -put -f /tmp/AutoInsuranceClaim.csv /data/insurance/raw/
+
+hdfs dfs -ls /data/insurance/raw/
+hdfs dfs -du -h /data/insurance/raw/
+hdfs dfs -ls -R /data/insurance/
+
+# Verify source header
+hdfs dfs -cat /data/insurance/raw/AutoInsuranceClaim.csv | head -2
+
+# Verify Spark prediction output
+hdfs dfs -ls /data/insurance/results/random_forest_predictions
+hdfs dfs -du -h /data/insurance/results/random_forest_predictions
+hdfs dfs -cat /data/insurance/results/random_forest_predictions/part-* | head -10
